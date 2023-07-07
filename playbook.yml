@@ -1,0 +1,8 @@
+- name: Install Gitlab
+  hosts:
+  vars_files:
+    - roles/gitlab/vars/main.yml
+  handlers:
+    - include: roles/gitlab/handlers/main.yml
+  roles:
+    - gitlab

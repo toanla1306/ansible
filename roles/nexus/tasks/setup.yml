@@ -1,0 +1,23 @@
+---
+  - name: add nexus groupname
+    group:
+      name: "{{nexus_group}}"
+  
+  - name: add nexus username
+    user:
+      name: "{{ nexus_user }}"
+      group: "{{ nexus_group }}"
+      home: /usr/share/nexus
+      createhome: yes
+  
+  - name: create nexus directory
+    file:
+      path: "{{ nexus_dir }}"
+      state: directory
+      mode: 0755
+
+  - name: create sonar type directory
+    file:
+      path: "{{ sonar_type_dir }}"
+      state: directory
+      mode: 0755

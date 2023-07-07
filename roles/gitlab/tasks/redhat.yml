@@ -1,0 +1,28 @@
+---
+  - name: Install openSSH, Policy Core Utils
+    yum:
+      name: "{{ item }}"
+      state: latest
+      with_items:
+        - curl
+        - policycoreutils-python
+        - openssh-server
+        - perl
+        - ca-certificates
+
+  - name: Enable HTTP
+    firewalld:
+      service: http
+      permanent: true
+      state: enabled
+
+  - name: Enable HTTPS
+    firewalld:
+      service: https
+      permanent: true
+      state: enabled
+
+  - name: Reload firewalld
+    service: 
+      name: firewalld
+      state: reloaded

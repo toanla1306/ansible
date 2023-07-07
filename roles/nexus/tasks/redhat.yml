@@ -1,0 +1,21 @@
+---
+  #install dependencies
+  - name: Install the JDK8
+    yum:
+      name: "java-1.8.0-openjdk-devel"
+      state: present
+  
+  - name: Install the python3
+    yum:
+      name: python3
+      state: present
+    
+  - name: Install the pip3
+    yum:
+      name: python3-pip
+      state: present
+  
+  - name: Install the php
+    yum:
+      name: php
+      state: present

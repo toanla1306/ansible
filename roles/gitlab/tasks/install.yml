@@ -1,0 +1,23 @@
+---
+  - name: Check Gitlab exists on server
+    stat: 
+      path: /etc/gitlab
+    register: gitlab
+
+  - name: Download package gitlab install
+    get_url:
+      url: "{{ url_gitlab_package_installer }}"
+      dest: /tmp/
+      mode: 755
+    when: not gitlab.stat.exists
+
+  - name: Execute file gitlab installer
+    shell:
+      cmd: /bin/bash /tmp/script.rpm.sh
+    when: not gitlab.stat.exists
+      
+  - name: Install Gitlalb
+    yum:
+      name: gitlab-ce
+      state: present
+    when: not gitlab.stat.exists

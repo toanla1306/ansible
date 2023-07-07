@@ -1,0 +1,26 @@
+---
+  - name: Install openSSH, Policy Core Utils
+    apt:
+      name: "{{ item }}"
+      state: latest
+      with_items:
+        - curl
+        - policycoreutils-python
+        - openssh-server
+        - perl
+        - ca-certificates
+
+  - name: Enable HTTP
+    ufw: 
+      rule: allow
+      name: http
+
+  - name: Enable HTTPS
+    ufw:
+      rule: allow
+      name: https
+
+  - name: Reload UFW
+    service:
+      name: ufw
+      state: reloaded

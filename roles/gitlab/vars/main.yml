@@ -1,0 +1,4 @@
+url_gitlab_package_installer: https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh
+gitlab_email_enabled: false
+ansible_hostname: gitlab-toanla
+prj_domain_name: com
